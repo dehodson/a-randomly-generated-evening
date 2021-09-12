@@ -31,6 +31,19 @@
   <script>
     const description = document.getElementById('what');
 
+    // First, checks if it isn't implemented yet.
+    if (!String.prototype.format) {
+      String.prototype.format = function() {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) {
+          return typeof args[number] != 'undefined'
+            ? args[number]
+            : match
+          ;
+        });
+      };
+    }
+
     const shuffle = (originalArray) => {
       let array = [...originalArray];
       let currentIndex = array.length, temporaryValue, randomIndex;
@@ -67,7 +80,8 @@
     const rand = (a) => a[randInt(0, a.length)];
 
     const generateANight = () => {
-      return `How about a <b>${rand(themes)}</b>-themed night where we have <b>${rand(cuisines)}</b> and <b>${rand(indulgences)}</b> and we <b>${rand(activities)}</b>?`;
+      let format = rand(formats);
+      return format.format(rand(themes), rand(cuisines), rand(indulgences), rand(activities));
     };
 
     const differentThing = () => {

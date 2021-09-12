@@ -42,6 +42,8 @@ const cuisines = [
   "Desserts",
   "All Kinds of Chocolate",
   "Specialty Pizza",
+  "a Sundae Bar",
+  "Submarine Sandwiches",
 ];
 
 const indulgences = [
@@ -57,6 +59,11 @@ const indulgences = [
   "Martinis",
   "Margaritas",
   "CBD Gummies",
+  "Dessert Coffees",
+  "Hookah",
+  "Exotic Candy",
+  "Hard Cider",
+  "Craft Beer",
 ];
 
 const activities = [
@@ -69,4 +76,15 @@ const activities = [
   "Watch a Classic Comedy",
   "Watch Technology Connections",
   "Play Classic Card Games",
+  "Play Minecraft",
+  "Listen to Alternative Rap",
+  "Bake Cookies",
+  "Share YouTube Videos to Watch",
+  "Watch King of the Hill",
+];
+
+const formats = [
+  "How about a <b>{0}</b>-themed night where we have <b>{1}</b> and <b>{2}</b> and we <b>{3}</b>?",
+  "What about a <b>{0}</b>-themed party where we have <b>{1}</b> as well as <b>{2}</b> and we <b>{3}</b>?",
+  "How about this: a <b>{0}</b>-themed evening. We'll have <b>{1}</b> and <b>{2}</b> and also we'll <b>{3}</b>.",
 ];
