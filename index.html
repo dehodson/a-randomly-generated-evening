@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="h-100">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="./animate.css"/>
+    <title>A Randomly Generated Evening</title>
+    <style>
+      .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+      }
+    </style>
+  </head>
+  <body id="bod" style="transition: background-color 0.5s" class="avenir h-100">
+    <article class="dt h-100 w-100 pv4 ph2 fixed z-0">
+      <div class="dtc v-mid pl5-l pl2 pr5-l pr2">
+        <h2 class="mt0 f1" id="title">A Randomly Generated Evening</h2>
+        <p class="mt0 f2" id="what"></p>
+        <div class="f3 noselect link dim br2 ba bw2 ph3 pv2 mb2 dib black pointer" id="button" href="#">next!</div>
+      </div>
+    </article>
+  </body>
+  <script src="./categories.js"></script>
+  <script>
+    const description = document.getElementById('what');
+
+    const shuffle = (originalArray) => {
+      let array = [...originalArray];
+      let currentIndex = array.length, temporaryValue, randomIndex;
+
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    };
+
+    const colors = [
+      'red',
+      'light-red',
+      'orange',
+      'gold',
+      'yellow',
+      'light-yellow',
+      'light-purple',
+      'pink',
+      'light-pink',
+      'green',
+      'light-green',
+      'blue',
+      'light-blue',
+    ];
+
+    const randInt = (mn, mx) => Math.floor((Math.random() * (mx - mn)) + mn);
+    const rand = (a) => a[randInt(0, a.length)];
+
+    const generateANight = () => {
+      return `How about a <b>${rand(themes)}</b>-themed night where we have <b>${rand(cuisines)}</b> and <b>${rand(indulgences)}</b> and we <b>${rand(activities)}</b>?`;
+    };
+
+    const differentThing = () => {
+      const bgcolor = rand(colors);
+      document.getElementById('bod').className = `avenir bg-${bgcolor} h-100`;
+      description.innerHTML = generateANight();
+    };
+
+    differentThing();
+
+    let prevented = false;
+    const swipeIn = () => {
+      if (!prevented) {
+        description.className = "mt0 f2 fadeOutLeft animated";
+        title.className = "mt0 f1 fadeOutLeft animated";
+        prevented = true;
+
+        setTimeout(() => {
+          description.className = "mt0 f2 fadeInRight animated";
+          title.className = "mt0 f1 fadeInRight animated";
+          prevented = false;
+          differentThing();
+        }, 1000);
+      }
+    };
+
+    document.getElementById('button').onclick = event => {
+      event.preventDefault();
+      swipeIn();
+    };
+  </script>
+</html>
