@@ -41,6 +41,7 @@ const cuisines = [
   "Baked Goods",
   "Desserts",
   "All Kinds of Chocolate",
+  "Specialty Pizza",
 ];
 
 const indulgences = [
@@ -51,6 +52,11 @@ const indulgences = [
   "Bourbon",
   "Mezcal",
   "Bring-your-own Cocktails",
+  "Mojitos",
+  "Mules",
+  "Martinis",
+  "Margaritas",
+  "CBD Gummies",
 ];
 
 const activities = [
@@ -62,4 +68,5 @@ const activities = [
   "Watch B-Horror Movies",
   "Watch a Classic Comedy",
   "Watch Technology Connections",
+  "Play Classic Card Games",
 ];
